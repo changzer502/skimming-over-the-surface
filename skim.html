@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮光掠影</title>
+</head>
+<style>
+    #myCanvas {
+        background-image: url("img/1111.jpg");
+        background-size: 100%;
+    }
+</style>
+
+<body>
+
+    <canvas id="myCanvas" width="300" height="500">
+        你的浏览器不支持canvas
+    </canvas>
+
+    <script>
+
+        var cans = document.getElementById("myCanvas");
+        var ctx = cans.getContext("2d");
+        // var c = cans.target;
+        // console.log(c);
+        var a = 350;
+        var b = -300;
+        var c = 370;
+        var d = -130;
+        var e = 500;
+        var f = -150;
+        ctx.beginPath();
+        ctx.moveTo(a, b);
+        ctx.lineTo(c, b);
+        ctx.lineTo(d, e);
+        ctx.lineTo(f, e);
+        ctx.closePath();
+        ctx.fillStyle = "rgba(255,255,255,0.5)"
+        ctx.fill();
+
+
+
+        function move(event) {
+            cans.height = cans.height;
+           
+            var speed = 6;
+            a += speed; b += speed; c += speed; d += speed; e += speed; f += speed;
+            ctx.beginPath();
+            ctx.moveTo(a, b);
+            ctx.lineTo(c, b);
+            ctx.lineTo(d, e);
+            ctx.lineTo(f, e);
+            ctx.closePath();
+            ctx.fillStyle = "rgba(255,255,255,0.5)"
+            ctx.fill();
+            if (d >= 300) {
+                return false;
+            }
+            
+            setTimeout(function () {
+                move();
+            }, 1);
+        }
+        function clean() {
+            a = 350;
+            b = -300;
+            c = 370;
+            d = -130;
+            e = 500;
+            f = -150;
+            ctx.beginPath();
+            ctx.moveTo(a, b);
+            ctx.lineTo(c, b);
+            ctx.lineTo(d, e);
+            ctx.lineTo(f, e);
+            ctx.closePath();
+            ctx.fillStyle = "rgba(255,255,255,0.5)"
+            ctx.fill();
+        }
+        cans.onmouseout = function (event) {
+            
+            clean();
+            
+        }
+
+        cans.onmouseover = function () {
+            move();
+        }
+
+
+
+    </script>
+</body>
+
+</html>
